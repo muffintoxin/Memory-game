@@ -1,0 +1,89 @@
+<head>
+    <title>memory</title>
+</head>
+
+<body>
+    <!-- {{> navbar}} 
+  
+	<div class="page-ct">
+  		<h1>Welcome to Memory!</h1>
+		{{> gameCards}}
+	</div> -->
+</body>
+
+<template name="ApplicationLayout">
+    {{> yield "header"}}
+    <div class="page-ct">
+    	<h4>Make move <a href="#" class="showTurn">{{getCurrentUser}}</a></h4>
+       {{> yield "main"}}
+    </div>
+</template>
+
+<template name="navbar">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Memory!</a>
+                <ul class="nav navbar-nav">
+                    <!-- 	<li>
+				<a href="#" class="js-add-doc"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>new game</a>
+			</li> -->
+                    <!-- drop down list -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Choose the user to play with<span class="caret"></span></a>
+                        {{#if currentUser}}
+	                        <ul class="dropdown-menu">
+	                            {{#each users}}
+	                            	{{> available_user}}
+	                            <!-- <li><a href="/game/{{_id}}">{{username}}</a></li> -->
+	                            {{/each}}
+	                        </ul>
+                        {{/if}}
+                    </li>
+                </ul>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                {{> loginButtons align="right"}}
+            </div>
+        </div>
+    </nav>
+</template>
+
+<template name="lobby_page">
+     <h1>Lets Play!</h1> 
+</template>
+
+<template name="available_user">
+    {{#unless isMyUser _id}}
+	    <li>
+	    	<a href="/game/{{_id}}">{{getUsername _id}}</a>
+	    </li>
+    {{/unless}}
+</template>
+
+<template name="gamePage">
+    {{#if gameReady}}
+	    You are playing with {{getOpponentName}}. Score: (You: {{getYourScore}}, Opponent: {{getOpponentScore}}). It is {{getCurrentUser}}'s turn.
+	    {{#if gameOver}}
+	    	{{#if currentUserWon}}
+	    		You won the game!
+	    	{{else}}
+	    		{{#if drawGame}}
+	    			Draw game!
+	    		{{else}}
+	    			You lost the game!
+	    		{{/if}}
+	    	{{/if}}
+	    	<div class="btn btn-primary btn-lg btn--restart js-restart">Restart Game</div>
+	    {{else}}
+	    	<br/>
+	    	<div class="undercover">
+			    <div class="game-field">
+			        {{#each getCards}}
+			        	<img class="game-card js-card-clicked" src="{{getImageSrc this}}" id="{{id}}" />
+			        {{/each}}
+			    </div>
+			</div>
+	    {{/if}}
+    {{/if}}
+</template>
