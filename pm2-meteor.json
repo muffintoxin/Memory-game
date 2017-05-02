@@ -1,0 +1,23 @@
+{
+  "appName": "memory",
+  "appLocation": {
+    "local": "/Users/Galina/Documents/projects/mit_Patrick/memory"
+  },
+  "meteorSettingsLocation": "",
+  "meteorSettingsInRepo": false,
+  "prebuildScript": "meteor install",
+  "meteorBuildFlags": "",
+  "env": {
+    "ROOT_URL": "",
+    "PORT": 3001,
+    "MONGO_URL": ""
+  },
+  "server": {
+    "host": "vps285030.ovh.net",
+    "username": "galina",
+    "pem": "~/.ssh/id_rsa",
+    "deploymentDir": "/projects/deploy/memory",
+    "exec_mode": "cluster_mode",
+    "instances": 1
+  }
+}
