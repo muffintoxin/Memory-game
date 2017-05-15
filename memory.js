@@ -132,17 +132,6 @@ if (Meteor.isClient) {
   });
 
   Template.gamePage.events({
-  // // this event fires when the user sends a message on the chat page
-  // 'submit .js-new-game':function(event){
-  //   // stop the form from triggering a page reload
-  //   event.preventDefault();
-  //   // see if we can find a chat object in the database
-  //   // to which we'll add the message
-  //   var gameId = Games.findOne({_id:Session.get("gameId")});
-  //   if (gameId){
-  //     Meteor.call('newGame', Meteor.userId(), Session.set("otherUserId"));
-  //   }
-  // },
   'click .js-card-clicked':function(event){
 
     event.preventDefault();
@@ -279,12 +268,6 @@ Meteor.methods({
         }
       } 
       else {
-        /*if (Meteor.userId() == user1Id) {
-          game.turn = user2Id;
-        }
-        else {
-          game.turn = user1Id;
-        }*/
         game.turn = ((Meteor.userId() == game.user1Id) ? game.user2Id : game.user1Id);
 
         Meteor.setTimeout(function() {
@@ -299,11 +282,3 @@ Meteor.methods({
     return Games.update({_id: gameId}, game);
   }
 });
-/*TODO:
-- jeder user kann nur was machen, wenn er am Zug ist
-- Karten verdecken, wenn sie nicht zusammenpassen
-- Wenn zwei Paar zusammenpassen, darf der Spieler weiter spielen und bekommt einen punkt
-  - dann darf der Spieler weiterspielen
-  - er bekommt einen punkt
-  - das Kartenpaar verschwindet (disable.png)
-*/

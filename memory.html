@@ -3,12 +3,6 @@
 </head>
 
 <body>
-    <!-- {{> navbar}} 
-  
-	<div class="page-ct">
-  		<h1>Welcome to Memory!</h1>
-		{{> gameCards}}
-	</div> -->
 </body>
 
 <template name="ApplicationLayout">
@@ -25,17 +19,12 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Memory!</a>
                 <ul class="nav navbar-nav">
-                    <!-- 	<li>
-				<a href="#" class="js-add-doc"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>new game</a>
-			</li> -->
-                    <!-- drop down list -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Choose the user to play with<span class="caret"></span></a>
                         {{#if currentUser}}
 	                        <ul class="dropdown-menu">
 	                            {{#each users}}
 	                            	{{> available_user}}
-	                            <!-- <li><a href="/game/{{_id}}">{{username}}</a></li> -->
 	                            {{/each}}
 	                        </ul>
                         {{/if}}
